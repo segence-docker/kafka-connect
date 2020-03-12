@@ -1,5 +1,8 @@
-Kafka Connect with Kinesis & S3
-===============================
+Kafka Connect Docker images
+===========================
+
+Kinesis-S3
+----------
 
 A Docker image containing:
 

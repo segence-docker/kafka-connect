@@ -11,11 +11,17 @@ all:
 
 .PHONY: build # Builds Docker image
 build:
-	@docker build -t $(ORGANIZATION)/$(REPOSITORY):$(VERSION) .
+ifndef profile
+        $(error profile parameter is undefined)
+endif
+	@docker build --file $(profile).dockerfile --tag $(ORGANIZATION)/$(REPOSITORY):$(VERSION)-$(profile) .
 
 .PHONY: push # Pushes Docker image
+ifndef profile
+        $(error profile parameter is undefined)
+endif
 push:
-	@docker push $(ORGANIZATION)/$(REPOSITORY):$(VERSION)
+	@docker push $(ORGANIZATION)/$(REPOSITORY):$(VERSION)-$(profile)
 
 .PHONY: release # Releases new tag; arguments: 'version=[semver version number]': define the version to release
 release:
