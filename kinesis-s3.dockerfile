@@ -1,4 +1,4 @@
-FROM confluentinc/cp-kafka-connect-base:5.4.0
+FROM confluentinc/cp-kafka-connect-base:6.2.0
 
 ARG AWS_SDK_VERSION=1.11.438
 ARG KINESIS_SOURCE_PLUGIN_VERSION=1.1.4

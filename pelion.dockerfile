@@ -1,4 +1,4 @@
-FROM confluentinc/cp-kafka-connect-base:5.4.0
+FROM confluentinc/cp-kafka-connect-base:6.2.0
 
 ARG PELION_PLUGIN_VERSION=1.0.3
 
