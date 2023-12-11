@@ -14,7 +14,7 @@ build:
 ifndef profile
         $(error profile parameter is undefined)
 endif
-	@docker build --file $(profile).dockerfile --tag $(ORGANIZATION)/$(REPOSITORY):$(VERSION)-$(profile) .
+	@docker build --tag $(ORGANIZATION)/$(REPOSITORY):$(VERSION)-$(profile) ./$(profile)
 
 .PHONY: push # Pushes Docker image
 ifndef profile
