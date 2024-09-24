@@ -1,6 +1,6 @@
 ORGANIZATION := segence
 REPOSITORY := $(shell basename -s .git `git config --get remote.origin.url`)
-VERSION := $(shell git tag --points-at HEAD)
+VERSION := $(shell git describe --tags --match 'v*' --abbrev=0 | cut -c2-)
 
 FONT_ESC := $(shell printf '\033')
 FONT_BOLD := ${FONT_ESC}[1m
@@ -14,7 +14,7 @@ build:
 ifndef profile
         $(error profile parameter is undefined)
 endif
-	@docker build --tag $(ORGANIZATION)/$(REPOSITORY):$(VERSION)-$(profile) ./$(profile)
+	@docker buildx build --platform linux/amd64,linux/arm64 --load --tag $(ORGANIZATION)/$(REPOSITORY):$(VERSION)-$(profile) ./$(profile)
 
 .PHONY: push # Pushes Docker image
 ifndef profile
