@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        classifier: [kafka]
+        classifier: [mysql]
     steps:
     - uses: actions/checkout@v3
     - name: Lint Dockerfile

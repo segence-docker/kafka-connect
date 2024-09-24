@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        classifier: [kafka]
+        classifier: [mysql]
     steps:
     - name: Check out the repo
       uses: actions/checkout@v4
