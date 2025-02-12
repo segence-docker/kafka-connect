@@ -12,15 +12,15 @@ all:
 .PHONY: build # Builds Docker image
 build:
 ifndef profile
-        $(error profile parameter is undefined)
+	$(error profile parameter is undefined)
 endif
 	@docker buildx build --platform linux/amd64,linux/arm64 --load --tag $(ORGANIZATION)/$(REPOSITORY):$(VERSION)-$(profile) ./$(profile)
 
 .PHONY: push # Pushes Docker image
-ifndef profile
-        $(error profile parameter is undefined)
-endif
 push:
+ifndef profile
+	$(error profile parameter is undefined)
+endif
 	@docker push $(ORGANIZATION)/$(REPOSITORY):$(VERSION)-$(profile)
 
 .PHONY: release # Releases new tag; arguments: 'version=[semver version number]': define the version to release
